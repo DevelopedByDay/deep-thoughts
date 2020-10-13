@@ -10,17 +10,18 @@ const resolvers = {
             return Thought.findOne({ _id });
         },
         users: async () => {
-            return user.find()
-                .select('-__v -password')
-                .populate('friends')
-                .populate('thoughts');
-        },
-        user: async (parent, { username }) => {
+            return User.find()
+              .select('-__v -password')
+              .populate('friends')
+              .populate('thoughts');
+          },
+          // get a user by username
+          user: async (parent, { username }) => {
             return User.findOne({ username })
-                .select('-__v -password')
-                .populate('friends')
-                .populate('thoughts');
-        }
+              .select('-__v -password')
+              .populate('friends')
+              .populate('thoughts');
+          },
     }
 };
 
